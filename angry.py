@@ -1,12 +1,13 @@
 from smiley import Smiley
 import time
 
-class Sad(Smiley):
+class Angry(Smiley):
     def __init__(self):
-        super().__init__(complexion = Smiley.BLUE)
+        super().__init__(complexion=Smiley.RED)
 
         self.draw_mouth()
         self.draw_eyes()
+        self.draw_eyebrows()
 
     def draw_mouth(self):
         """
@@ -16,13 +17,20 @@ class Sad(Smiley):
         for pixel in mouth:
             self.pixels[pixel] = self.BLANK
 
+    def draw_eyebrows(self):
+        """
+        Draws the eyebrows feature on a smiley
+        """
+        eyebrows = [17, 19, 20, 22, 21, 18,]
+        for pixel in eyebrows:
+            self.pixels[pixel] = self.BLANK
 
     def draw_eyes(self, wide_open=True):
         """
         Draws open or closed eyes on a smiley
         :param wide_open: Render eyes wide open or shut
         """
-        eyes = [18, 29, 21, 26]
+        eyes = [26, 29]
         for pixel in eyes:
             if wide_open:
                 eyes = self.BLANK
